@@ -17,7 +17,7 @@ resource "azurerm_subnet" "vnet01_subnet" {
     name = "Subnet-A"
     resource_group_name = azurerm_resource_group.local_rm.name
     virtual_network_name = azurerm_virtual_network.local_vnet01.name
-    address_prefixes = [ "10.0.1.0/24" ]
+    address_prefixes = [ "10.1.1.0/24" ]
 }
 
 resource "azurerm_network_interface" "vnic" {
