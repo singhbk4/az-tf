@@ -1,18 +1,35 @@
 pipeline {
   agent any
   stages {
-    stage ('DataUpdate') {
+    stage ('checkout') {
+      steps {
+        echo 'Repo Pull'
+      }
+    }
+	stage ('terraform init') {
       steps {
         script {
-                sh 'cte.py'
+                bat 'terraform init'
         }
       }
     }
-     stage ('build') {
+     stage ('terraform plan') {
       steps {
         script {
-                sh 'main_script.py'
+                bat 'terraform plan'
             }
+          }
+        }
+		stage ('terraform apply') {
+      steps {
+        script {
+                bat 'terraform apply -auto-approve'
+            }
+          }
+        }
+		stage ('Successfully executed') {
+      steps {
+        echo 'done'
           }
         }
       }
