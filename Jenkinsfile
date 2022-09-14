@@ -20,20 +20,20 @@ pipeline {
             }
           }
         }
-//      stage ('terraform apply') {
-//       steps {
-//         script {
-//                 bat 'terraform apply -auto-approve'
-//             }
-//           }
-//         }
-     stage ('terraform destroy') {
+     stage ('terraform apply') {
       steps {
         script {
-                bat 'terraform destroy -auto-approve'
+                bat 'terraform apply -auto-approve'
             }
           }
         }
+    //  stage ('terraform destroy') {
+    //   steps {
+    //     script {
+    //             bat 'terraform destroy -auto-approve'
+    //         }
+    //       }
+    //     }
      stage ('Successfully executed') {
       steps {
         echo 'done'
