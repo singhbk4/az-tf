@@ -1,40 +1,40 @@
 pipeline {
   agent any
   stages {
-    stage ('checkout') {
-      steps {
-        echo 'Repo Pull'
-      }
-    }
-	stage ('terraform init') {
+    // stage ('checkout') {
+    //   steps {
+    //     echo 'Repo Pull'
+    //   }
+    // }
+	  stage ('terraform init') {
       steps {
         script {
                 bat 'terraform init'
         }
       }
     }
-     stage ('terraform plan') {
+    stage ('terraform plan') {
       steps {
         script {
                 bat 'terraform plan'
             }
           }
         }
-     stage ('terraform apply') {
-      steps {
-        script {
-                bat 'terraform apply -auto-approve'
-            }
-          }
-        }
-    //  stage ('terraform destroy') {
+    // stage ('terraform apply') {
     //   steps {
     //     script {
-    //             bat 'terraform destroy -auto-approve'
+    //             bat 'terraform apply -auto-approve'
     //         }
     //       }
     //     }
-     stage ('Successfully executed') {
+    stage ('terraform destroy') {
+      steps {
+        script {
+                bat 'terraform destroy -auto-approve'
+            }
+          }
+        }
+    stage ('Successfully executed') {
       steps {
         echo 'done'
           }
